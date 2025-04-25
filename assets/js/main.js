@@ -1,41 +1,36 @@
-/* при нажатии на кнопку, переключение мжд скрытием и отображением раскр. содержимого */
-function myFunction() {
-    document.getElementById("dropdownn").classList.toggle("show")
+// вып. меню
+function Dropdown() {
+    document.getElementById("dropdownMenu").classList.toggle("show");
 }
 
-/* закрыть вып.меню, если щелкает за пределами */
-window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown_content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
+window.onclick = function(event) {
+    if (!event.target.matches('.dropdown_btn')) {
+        const dropdowns = document.getElementsByClassName("content");
+        for (let i = 0; i < dropdowns.length; i++) {
+            const currentDropdown = dropdowns[i];
+            if (currentDropdown.classList.contains('show')) {
+                currentDropdown.classList.remove('show');
             }
         }
     }
 }
+// вып. меню
 
+// аккордион
+const questionItems = document.getElementsByClassName("question");
 
-var acc = document.getElementsByClassName("question");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
+for (let i = 0; i < questionItems.length; i++) {
+    questionItems[i].addEventListener("click", function () {
         this.classList.toggle("active");
 
-
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
+        const answerPanel = this.nextElementSibling;
+        answerPanel.style.display = answerPanel.style.display === "block" ? "none" : "block";
     });
 }
+// аккордион
 
-// slider
+
+// слайдер
 const slides = document.querySelectorAll('.slide')
 let currentIndex = 0;
 
@@ -63,5 +58,6 @@ document.getElementById('prev').addEventListener('click', () => {
     }
     slides[currentIndex].classList.add('active')
 })
-
-// slider
+// слайдер
+   
+   
